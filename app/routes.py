@@ -17,8 +17,14 @@ def health_check():
 def analyze_user_spending(user_id):
     """Analyze user spending and provide suggestions"""
     try:
+        print(f"Received request for user: {user_id}")
+        
         # Get user expenses
+        backend_url = os.getenv('BACKEND_URL')
+        print(f"Backend URL: {backend_url}")
+        
         expenses = get_user_expenses(user_id)
+        print(f"Retrieved {len(expenses)} expenses")
         
         if not expenses:
             return jsonify({
@@ -26,7 +32,7 @@ def analyze_user_spending(user_id):
                 "data": {
                     "suggestions": [{
                         "type": "info",
-                        "message": "No spending data available for analysis. Start adding expenses to get personalized suggestions."
+                        "message": "No spending data available for analysis."
                     }],
                     "summary": {}
                 }
@@ -41,6 +47,7 @@ def analyze_user_spending(user_id):
         })
         
     except Exception as e:
+        print(f"Error in analyze_user_spending: {str(e)}")
         return jsonify({
             "success": False,
             "message": f"Error analyzing spending: {str(e)}"
