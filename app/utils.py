@@ -8,12 +8,23 @@ def get_user_expenses(user_id):
     """Fetch user expenses from the backend API"""
     try:
         backend_url = os.getenv('BACKEND_URL')
-        response = requests.get(f"{backend_url}/api/expenses", params={'userId': user_id})
+        api_key = os.getenv('INTERNAL_API_KEY')
+        
+        headers = {
+            'x-api-key': api_key,
+            'Content-Type': 'application/json'
+        }
+        
+        response = requests.get(
+            f"{backend_url}/api/expenses", 
+            params={'userId': user_id},
+            headers=headers
+        )
         
         if response.status_code == 200:
             return response.json().get('data', [])
         else:
-            print(f"Error fetching expenses: {response.status_code}")
+            print(f"Error fetching expenses: {response.status_code} - {response.text}")
             return []
     except Exception as e:
         print(f"Exception fetching expenses: {e}")
