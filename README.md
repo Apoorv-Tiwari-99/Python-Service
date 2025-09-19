@@ -40,15 +40,14 @@ It provides **smart suggestions** based on user expense data, using Flask and Pa
 ## ⚙️ Setup & Running Locally
 
 1. **Clone the repo**
-
-   ```bash
+   
   git clone https://github.com/Apoorv-Tiwari-99/Python-Service.git
   cd Python-Service
   
-2.  Install dependencies
+3.  Install dependencies
    pip install -r requirements.txt
 
-3. Run the service
+4. Run the service
    python run.py
 
  🔑 Environment Variables
