@@ -55,7 +55,5 @@ It provides **smart suggestions** based on user expense data, using Flask and Pa
 FLASK_ENV=development
 PORT=5001                 # or whichever port you wish the service to listen on
 BACKEND_URL=your_backend_api_url 
+INTERNAL_API_KEY=your-secure-api-key-12345  // you can use this 
 
-
-   git clone https://github.com/Apoorv-Tiwari-99/Python-Service.git
-   cd Python-Service
