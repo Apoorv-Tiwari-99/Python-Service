@@ -39,7 +39,9 @@ def analyze_user_spending(user_id):
             })
         
         # Analyze spending
+        print("Analyzing spending patterns...")
         analysis = analyze_spending(expenses)
+        print(f"Generated {len(analysis.get('suggestions', []))} suggestions")
         
         return jsonify({
             "success": True,
